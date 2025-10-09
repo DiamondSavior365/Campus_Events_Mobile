@@ -6,16 +6,16 @@ import { View, Text, StyleSheet, Image } from "react-native";
 //while single components show just a resuable piece
 
 // Destructruring the Props property to obtain imageSource, title and score.
-const ImageDetail = ({ imageSource, title, info, count }) => {
-  //   console.log(props); // use to view properties, must have props as parameter for ImageDetail function
+const ImageDetail = (prop) => {
+  console.log(prop); // use to view properties, must have props as parameter for ImageDetail function
 
   return (
     <View>
       <View style={styles.container}></View>
-      <Image source={imageSource} />
-      <Text style={styles.title}>{title}</Text>
-      <Text style={styles.info}>Info - {info}</Text>
-      <Text style={styles.confirm_guest}>Confirmed Guest: {count}</Text>
+      <Image source={prop.imageSource} />
+      <Text style={styles.title}>{prop.title}</Text>
+      <Text style={styles.info}>Info - {prop.info}</Text>
+      <Text style={styles.confirm_guest}>Confirmed Guest: {prop.count}</Text>
     </View>
   );
 };
