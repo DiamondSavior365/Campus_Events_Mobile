@@ -3,14 +3,16 @@ import { createStackNavigator } from "react-navigation-stack";
 import HomeScreen from "./src/screens/HomeScreen";
 import ClubList from "./src/screens/ClubList";
 import EventList from "./src/screens/EventList";
-import ImageScreen from "./src/screens/ImageScreen";
+import HalloweenScreen from "./src/screens/HalloweenScreen";
+import ChristmasScreen from "./src/screens/ChristmasScreen";
 
 const navigator = createStackNavigator(
   {
     Home: HomeScreen,
     Event_List: EventList,
     Club_List: ClubList,
-    Image_Screen: ImageScreen,
+    Halloween_Screen: HalloweenScreen,
+    Christmas_Screen: ChristmasScreen,
   },
   {
     initialRouteName: "Home",
