@@ -11,45 +11,45 @@ const ImageScreen = () => {
 
     <ScrollView style={styles.container}>
       <ImageDetail
-        title="Winter Wonderland Gala"
-        imageSource={require("../../assets/halloween_seal/seal_haunted_trail_1.png")}
-        info="Step into a magical evening of snow-kissed elegance, twinkling lights, and holiday cheer."
+        title="Community Potluck Dinner"
+        imageSource={require("../../assets/thanksgiving_seal/potluck_seal.png")}
+        info="Bring your favorite Thanksgiving dish and share a meal with neighbors and friends in a festive, welcoming setting."
         count={74}
       />
       <ImageDetail
-        title="Jingle & Mingle"
-        imageSource={require("../../assets/halloween_seal/seal_witch_brew_party_3.png")}
-        info="Mix, mingle, and jingle all the way at this lively holiday social full of music, laughter, and festive fun."
+        title="Turkey Trot Fun Run"
+        imageSource={require("../../assets/thanksgiving_seal/fun_run_seals.png")}
+        info="Start the day with a healthy 5K or 1-mile walk/run—costumes encouraged and all ages welcome!"
         count={29}
       />
       <ImageDetail
-        title="The Santa Social"
-        imageSource={require("../../assets/halloween_seal/seal_haloween_movie_marathon_1.png")}
-        info="A cheerful gathering where Santa makes an appearance, perfect for photos, treats, and merry memories."
+        title="Thanksgiving Craft Fair"
+        imageSource={require("../../assets/thanksgiving_seal/craft_fair_seal.png")}
+        info="Shop handmade gifts, fall décor, and local goods while supporting small businesses and artisans."
         count={56}
       />
       <ImageDetail
-        title="Christmas at the Cabin"
-        imageSource={require("../../assets/halloween_seal/seal__masquerade_ball_1.png")}
-        info="Cozy up by the (virtual or real) fire for a rustic, warm celebration with hot cocoa, games, and classic holiday charm."
+        title="Pumpkin Pie Bake-Off"
+        imageSource={require("../../assets/thanksgiving_seal/bake_off_seal.png")}
+        info="Bakers compete to create the tastiest pie—come taste the entries and vote for your favorite!"
         count={37}
       />
       <ImageDetail
-        title="Holly Jolly Festival"
-        imageSource={require("../../assets/halloween_seal/seal_haunted_escape_room_2.png")}
-        info="A fun-filled event packed with activities, treats, and jolly surprises for guests of all ages."
+        title="Gratitude Tree Activity"
+        imageSource={require("../../assets/thanksgiving_seal/gratitude_tree_seal.png")}
+        info="Write what you’re thankful for on a leaf and hang it on the community tree to spread positivity and reflection."
         count={48}
       />
       <ImageDetail
-        title="Tinsel Town Bash"
-        imageSource={require("../../assets/halloween_seal/seal_zombie_glow_walk_1.png")}
-        info="Glam it up Hollywood-style with glittering décor, festive cocktails, and a red carpet entrance to remember."
+        title="Family Game & Movie Night"
+        imageSource={require("../../assets/thanksgiving_seal/family_night_seals.png")}
+        info="Cozy up with board games and a Thanksgiving-themed movie perfect for all ages—popcorn and cider provided."
         count={58}
       />
       <ImageDetail
-        title="Miracle on Kellogg Drive"
-        imageSource={require("../../assets/halloween_seal/seal_pumpkin_palooza_2.png")}
-        info="Celebrate the spirit of the season with a magical neighborhood or community gathering inspired by timeless holiday miracles."
+        title="Food Drive & Volunteer Day"
+        imageSource={require("../../assets/thanksgiving_seal/food_drive_seals.png")}
+        info="Give back by donating canned goods or volunteering to pack Thanksgiving meals for families in need."
         count={82}
       />
     </ScrollView>

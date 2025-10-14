@@ -17,7 +17,7 @@ const navigator = createStackNavigator(
     Christmas_Screen: ChristmasScreen,
   },
   {
-    initialRouteName: "Thanksgiving_Screen",
+    initialRouteName: "Home",
     defaultNavigationOptions: {
       title: "Campus Events",
       headerShown: false,
