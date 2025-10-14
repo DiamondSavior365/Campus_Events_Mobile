@@ -11,45 +11,46 @@ const ImageScreen = () => {
 
     <ScrollView style={styles.container}>
       <ImageDetail
-        title="TBD"
-        imageSource={require("../../assets/halloween_seal/seal_haunted_trail_1.png")}
-        info="TBD"
+        title="Holiday Market & Hot Cocoa Bar"
+        imageSource={require("../../assets/christmas_seal/market_place_seal1.png")}
+        info="Sip, Snack, and Enjoy the Whimsy of the Lively Spirit!"
         count={9}
+
       />
       <ImageDetail
-        title="TBD"
-        imageSource={require("../../assets/halloween_seal/seal_haunted_trail_1.png")}
-        info="TBD"
+        title="Christmas karaoke"
+        imageSource={require("../../assets/christmas_seal/christmas_karaoke1.png")}
+        info="Chime Alongside the Sleigh bells! -- One Song at a Time"
         count={7}
       />
       <ImageDetail
-        title="TBD"
-        imageSource={require("../../assets/halloween_seal/seal_haunted_trail_1.png")}
-        info="TBD"
+        title="Candle-Making Workshop"
+        imageSource={require("../../assets/christmas_seal/candlemaking_seals1.png")}
+        info="Light Up the Holidays! -- Literally"
         count={10}
       />
       <ImageDetail
-        title="TBD"
-        imageSource={require("../../assets/halloween_seal/seal_haunted_trail_1.png")}
-        info="TBD"
+        title="Gingerbread House Contest"
+        imageSource={require("../../assets/christmas_seal/gingerbread_seals1.png")}
+        info="Build it, Break it, Make it Better!"
         count={10}
       />
       <ImageDetail
-        title="TBD"
-        imageSource={require("../../assets/halloween_seal/seal_haunted_trail_1.png")}
-        info="TBD"
+        title="Ornament Dodgeball"
+        imageSource={require("../../assets/christmas_seal/dodgeball_seals1.png")}
+        info="Duck, Dodge, & Deck the Halls!"
         count={10}
       />
       <ImageDetail
-        title="TBD"
-        imageSource={require("../../assets/halloween_seal/seal_haunted_trail_1.png")}
-        info="TBD"
+        title="Secret Santa Gift Exchange"
+        imageSource={require("../../assets/christmas_seal/secret_santa_seals1.png")}
+        info="Give a Little, Laugh A Lot!"
         count={10}
       />
       <ImageDetail
-        title="TBD"
-        imageSource={require("../../assets/halloween_seal/seal_haunted_trail_1.png")}
-        info="TBD"
+        title="Krampus Escape Room"
+        imageSource={require("../../assets/christmas_seal/escape_room_seals1.png")}
+        info="Escape Krampus, Solve Puzzles and Sleigh the Game!"
         count={10}
       />
     </ScrollView>
@@ -64,4 +65,4 @@ ImageScreen.navigationOptions = {
 
 const styles = StyleSheet.create({});
 
-export default ImageScreen;
+export default ImageScreen; 
