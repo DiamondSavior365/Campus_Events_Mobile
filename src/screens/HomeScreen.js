@@ -18,7 +18,7 @@ const HomeScreen = ({ navigation }) => {
     >
       <Text style={styles.text}>Campus Events!!</Text>
 
-      <TouchableOpacity onPress={() => navigation.navigate("Halloween_Screen")}>
+      <TouchableOpacity onPress={() => navigation.navigate("Christmas_Screen")}>
         <Text style={styles.button}>Click to Enter</Text>
       </TouchableOpacity>
     </ImageBackground>
