@@ -38,6 +38,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontFamily: "Times New Roman",
     marginBottom: 10,
+    paddingHorizontal: 15,
   },
   info: {
     marginBottom: 10,
