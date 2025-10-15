@@ -10,9 +10,12 @@ const HalloweenImageDetail = (prop) => {
   // console.log(prop); // use to view properties, must have props as parameter for ImageDetail function
 
   return (
-    <View>
+    <View style={styles.centeredContainer}>
       <View style={styles.container}></View>
-      <Image source={prop.imageSource} />
+      <Image
+        source={prop.imageSource}
+        style={{ width: 385, height: 385, resizeMode: "contain" }}
+      />
       <Text style={styles.title}>{prop.title}</Text>
       <Text style={styles.info}>Info - {prop.info}</Text>
       <Text style={styles.confirm_guest}>Confirmed Guest: {prop.count}</Text>
@@ -21,6 +24,11 @@ const HalloweenImageDetail = (prop) => {
 };
 
 const styles = StyleSheet.create({
+  centeredContainer: {
+    alignItems: "center", // centers horizontally
+    // justifyContent: "center", // optional: centers vertically if you give height
+    // padding: 10, // optional: adds some spacing from screen edges
+  },
   container: {
     marginBottom: 30,
   },
@@ -39,6 +47,7 @@ const styles = StyleSheet.create({
     textShadowColor: "#000",
     textShadowOffset: { width: 0.5, height: 1.5 },
     textShadowRadius: 2,
+    paddingHorizontal: 15,
   },
   confirm_guest: {
     fontWeight: "600",
