@@ -34,6 +34,11 @@ const DirectoryScreen = ({ navigation }) => {
         >
           <Text style={styles.button}>Go to Christmas Screen</Text>
         </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => navigation.navigate("F1_Racer_Screen")}
+        >
+          <Text style={styles.button}>Go to F1 Racer Screen</Text>
+        </TouchableOpacity>
       </ScrollView>
     </View>
   );
