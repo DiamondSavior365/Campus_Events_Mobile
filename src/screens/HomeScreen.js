@@ -18,9 +18,12 @@ const HomeScreen = ({ navigation }) => {
     >
       <Text style={styles.text}>Campus Events!!</Text>
 
-      <TouchableOpacity onPress={() => navigation.navigate("Directory_Screen")}>
+      <TouchableOpacity onPress={() => navigation.navigate("Login_Screen")}>
         <Text style={styles.button}>Click to Enter</Text>
       </TouchableOpacity>
+      {/* <TouchableOpacity onPress={() => navigation.navigate("Directory_Screen")}>
+        <Text style={styles.button}>Click to Enter</Text>
+      </TouchableOpacity> */}
     </ImageBackground>
   );
 };
@@ -46,7 +49,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     bottom: -350,
     alignSelf: "center",
-    backgroundColor: "#1E9DB9",
+    backgroundColor: "rgba(30, 157, 185, 0.55)",
     borderRadius: 25,
     paddingHorizontal: 24,
   },
