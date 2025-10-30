@@ -5,23 +5,23 @@ import {
   StyleSheet,
   TextInput,
   TouchableOpacity,
-	ActivityIndicator,
+  ActivityIndicator,
 } from "react-native";
-import { StackActions, NavigationActions } from 'react-navigation'
-import { supabase } from '../lib/supabase/supabase';
-import { useAuthContext } from '../lib/supabase/hooks/useAuthContext';
+import { StackActions, NavigationActions } from "react-navigation";
+import { supabase } from "../lib/supabase/supabase";
+import { useAuthContext } from "../lib/supabase/hooks/useAuthContext";
 
 const LoginScreen = ({ navigation }) => {
-	const { isLoading: authLoading } = useAuthContext(); // optional: read global loading
+  const { isLoading: authLoading } = useAuthContext(); // optional: read global loading
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-	const [loading, setLoading] = useState(false);
-	const [errorMsg, setErrorMsg] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState(null);
 
   const handleSignIn = async () => {
     setErrorMsg(null);
     if (!email || !password) {
-      setErrorMsg('Please enter both email and password.');
+      setErrorMsg("Please enter both email and password.");
       return;
     }
 
@@ -33,20 +33,22 @@ const LoginScreen = ({ navigation }) => {
       });
 
       if (error) {
-        setErrorMsg(error.message ?? 'Failed to sign in.');
-        console.error('Sign-in error', error);
+        setErrorMsg(error.message ?? "Failed to sign in.");
+        console.error("Sign-in error", error);
       } else {
         // Signed in — session will be available via AuthProvider's onAuthStateChange.
         // navigates the user to directory screen upon login:
-		const resetAction = StackActions.reset({
-			index: 0,
-			actions: [NavigationActions.navigate({ routeName: 'Directory_Screen'})],
-		});
-		navigation.dispatch(resetAction);
+        const resetAction = StackActions.reset({
+          index: 0,
+          actions: [
+            NavigationActions.navigate({ routeName: "Directory_Screen" }),
+          ],
+        });
+        navigation.dispatch(resetAction);
       }
     } catch (err) {
-      console.error('Unexpected sign-in error', err);
-      setErrorMsg('An unexpected error occurred.');
+      console.error("Unexpected sign-in error", err);
+      setErrorMsg("An unexpected error occurred.");
     } finally {
       setLoading(false);
     }
@@ -57,8 +59,8 @@ const LoginScreen = ({ navigation }) => {
       <Text style={styles.title}>Login</Text>
       <TextInput
         style={styles.input}
-				placeholder="Email"
-				keyboardType="email-address"
+        // placeholder="Email"
+        keyboardType="email-address"
         autoCapitalize="none"
         autoCorrect={false}
         value={email}
@@ -68,18 +70,18 @@ const LoginScreen = ({ navigation }) => {
 
       <TextInput
         style={styles.input}
-				placeholder="Password"
-				secureTextEntry
+        placeholder="Password"
+        secureTextEntry
         autoCapitalize="none"
         autoCorrect={false}
         value={password}
-        placeholder="Password"
+        // placeholder="Password"
         onChangeText={(newValue) => setPassword(newValue)}
       />
 
-	  	{errorMsg ? <Text style={styles.error}>{errorMsg}</Text> : null}
+      {errorMsg ? <Text style={styles.error}>{errorMsg}</Text> : null}
 
-			<TouchableOpacity
+      <TouchableOpacity
         style={[styles.button, loading && styles.buttonDisabled]}
         onPress={handleSignIn}
         disabled={loading}
@@ -91,18 +93,19 @@ const LoginScreen = ({ navigation }) => {
         )}
       </TouchableOpacity>
 
-			<TouchableOpacity onPress={() => navigation.navigate('Sign_Up_Screen')}>
+      <TouchableOpacity onPress={() => navigation.navigate("Sign_Up_Screen")}>
         <Text style={styles.link}>Don't have an account? Sign Up</Text>
       </TouchableOpacity>
 
       <TouchableOpacity onPress={() => navigation.navigate("Directory_Screen")}>
         <Text style={styles.guest}>Continue as guest</Text>
       </TouchableOpacity>
-      </View>
-
+      {/* </View> */}
 
       <Text>Your email is: {email}</Text>
-      <Text>Your password is: {password ? '●'.repeat(password.length) : ''}</Text>
+      <Text>
+        Your password is: {password ? "●".repeat(password.length) : ""}
+      </Text>
     </View>
   );
 };
@@ -113,11 +116,11 @@ LoginScreen.navigationOptions = {
 };
 
 const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		padding: 20,
-		justifyContent: 'center',
-	},
+  container: {
+    flex: 1,
+    padding: 20,
+    justifyContent: "center",
+  },
   input: {
     height: 48,
     width: "95%",
@@ -132,8 +135,8 @@ const styles = StyleSheet.create({
   logoImage: {
     width: 200,
     height: 200,
-    resizeMode: 'cover',
-    alignSelf: 'center',
+    resizeMode: "cover",
+    alignSelf: "center",
   },
   titleBlockStyle: {
     //backgroundColor: "#0382A5",
@@ -172,7 +175,7 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 16,
     fontWeight: "600",
-    paddingLeft:"5%",
+    paddingLeft: "5%",
   },
   signUp: {
     justifyContent: "center",
@@ -183,31 +186,31 @@ const styles = StyleSheet.create({
   },
   guest: {
     color: "blue",
-		marginTop: 12,
-		textAlign: 'center',
+    marginTop: 12,
+    textAlign: "center",
   },
-	button: {
-		marginTop: 12,
-    backgroundColor: '#2b8aef',
+  button: {
+    marginTop: 12,
+    backgroundColor: "#2b8aef",
     padding: 12,
     borderRadius: 6,
-    alignItems: 'center',
-	},
-	buttonText: {
-		color: 'white',
-	},
-	link: {
-		color: 'blue',
-		marginTop: 12,
-		textAlign: 'center',
-	},
-	error: {
-		textAlign: 'center'
-	},
-	title: {
-		textAlign: 'center',
-		fontSize: 24,
-	},
+    alignItems: "center",
+  },
+  buttonText: {
+    color: "white",
+  },
+  link: {
+    color: "blue",
+    marginTop: 12,
+    textAlign: "center",
+  },
+  error: {
+    textAlign: "center",
+  },
+  title: {
+    textAlign: "center",
+    fontSize: 24,
+  },
 });
 
 export default LoginScreen;
