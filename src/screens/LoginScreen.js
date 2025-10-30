@@ -62,6 +62,7 @@ const LoginScreen = ({ navigation }) => {
         autoCapitalize="none"
         autoCorrect={false}
         value={email}
+        placeholder="Email"
         onChangeText={(newValue) => setEmail(newValue)}
       />
 
@@ -72,6 +73,7 @@ const LoginScreen = ({ navigation }) => {
         autoCapitalize="none"
         autoCorrect={false}
         value={password}
+        placeholder="Password"
         onChangeText={(newValue) => setPassword(newValue)}
       />
 
@@ -96,6 +98,8 @@ const LoginScreen = ({ navigation }) => {
       <TouchableOpacity onPress={() => navigation.navigate("Directory_Screen")}>
         <Text style={styles.guest}>Continue as guest</Text>
       </TouchableOpacity>
+      </View>
+
 
       <Text>Your email is: {email}</Text>
       <Text>Your password is: {password ? '●'.repeat(password.length) : ''}</Text>
@@ -115,9 +119,67 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 	},
   input: {
-    margin: 15,
-    borderColor: "black",
+    height: 48,
+    width: "95%",
+    alignSelf: "center",
+    borderColor: "#ccc",
     borderWidth: 1,
+    borderRadius: 8,
+    paddingHorizontal: 12,
+    marginBottom: 12,
+    backgroundColor: "#fff",
+  },
+  logoImage: {
+    width: 200,
+    height: 200,
+    resizeMode: 'cover',
+    alignSelf: 'center',
+  },
+  titleBlockStyle: {
+    //backgroundColor: "#0382A5",
+    height: "50%",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "60%",
+    alignSelf: "center",
+    borderRadius: 24,
+  },
+  titleStyle: {
+    fontSize: 34,
+    color: "#fff",
+    fontWeight: "600",
+  },
+  subTitleStyle: {
+    marginTop: 8,
+    //backgroundColor: "#0382A5",
+    borderRadius: 4,
+    paddingHorizontal: 15,
+    color: "#fff",
+    paddingVertical: 4,
+    overflow: "hidden",
+  },
+  button: {
+    backgroundColor: "#0382A5",
+    width: "95%",
+    paddingVertical: 14,
+    borderRadius: 32,
+    alignSelf: "center",
+    alignItems: "left",
+    marginTop: 8,
+    marginBottom: 6,
+  },
+  buttonText: {
+    color: "#fff",
+    fontSize: 16,
+    fontWeight: "600",
+    paddingLeft:"5%",
+  },
+  signUp: {
+    justifyContent: "center",
+    color: "#fff",
+    paddingLeft: "3%",
+    paddingTop: 4,
+    fontSize: 15,
   },
   guest: {
     color: "blue",
