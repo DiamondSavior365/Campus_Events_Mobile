@@ -5,32 +5,60 @@ import {
   StyleSheet,
   TextInput,
   TouchableOpacity,
-  Image,
+	ActivityIndicator,
 } from "react-native";
+import { StackActions, NavigationActions } from 'react-navigation'
+import { supabase } from '../lib/supabase/supabase';
+import { useAuthContext } from '../lib/supabase/hooks/useAuthContext';
 
 const LoginScreen = ({ navigation }) => {
+	const { isLoading: authLoading } = useAuthContext(); // optional: read global loading
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+	const [loading, setLoading] = useState(false);
+	const [errorMsg, setErrorMsg] = useState(null);
 
-  const onLogin = () => {
-    // Placeholder for authentication logic.
+  const handleSignIn = async () => {
+    setErrorMsg(null);
+    if (!email || !password) {
+      setErrorMsg('Please enter both email and password.');
+      return;
+    }
+
+    try {
+      setLoading(true);
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+
+      if (error) {
+        setErrorMsg(error.message ?? 'Failed to sign in.');
+        console.error('Sign-in error', error);
+      } else {
+        // Signed in — session will be available via AuthProvider's onAuthStateChange.
+        // navigates the user to directory screen upon login:
+		const resetAction = StackActions.reset({
+			index: 0,
+			actions: [NavigationActions.navigate({ routeName: 'Directory_Screen'})],
+		});
+		navigation.dispatch(resetAction);
+      }
+    } catch (err) {
+      console.error('Unexpected sign-in error', err);
+      setErrorMsg('An unexpected error occurred.');
+    } finally {
+      setLoading(false);
+    }
   };
-  const onSignUp = () => {
-    // Placeholder for sign-up logic.
-  }
 
   return (
     <View style={styles.container}>
-      <View style={styles.titleBlockStyle}>
-        <Image 
-        source={require("../../assets/login-icon.png")}
-        style={styles.logoImage}
-      />
-        <Text style={styles.titleStyle}>Login</Text>
-        <Text style={styles.subTitleStyle}>Welcone, Please sign in</Text>
-      </View>
+      <Text style={styles.title}>Login</Text>
       <TextInput
         style={styles.input}
+				placeholder="Email"
+				keyboardType="email-address"
         autoCapitalize="none"
         autoCorrect={false}
         value={email}
@@ -40,31 +68,41 @@ const LoginScreen = ({ navigation }) => {
 
       <TextInput
         style={styles.input}
+				placeholder="Password"
+				secureTextEntry
         autoCapitalize="none"
         autoCorrect={false}
         value={password}
         placeholder="Password"
         onChangeText={(newValue) => setPassword(newValue)}
       />
-      <TouchableOpacity style={styles.button} onPress={onLogin}>
-          <Text style={styles.buttonText}>Login</Text>
-        </TouchableOpacity>
 
-        <Text style={styles.signUp}>Don't have an account? </Text>
+	  	{errorMsg ? <Text style={styles.error}>{errorMsg}</Text> : null}
 
-      <View>
-        <TouchableOpacity style={styles.button} onPress={onSignUp}>
-          <Text style={styles.buttonText}>Sign Up</Text>
-        </TouchableOpacity>
-      
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Directory_Screen")}>
-        <Text style={styles.buttonText}>Continue as guest</Text>
+			<TouchableOpacity
+        style={[styles.button, loading && styles.buttonDisabled]}
+        onPress={handleSignIn}
+        disabled={loading}
+      >
+        {loading ? (
+          <ActivityIndicator />
+        ) : (
+          <Text style={styles.buttonText}>Sign in</Text>
+        )}
+      </TouchableOpacity>
+
+			<TouchableOpacity onPress={() => navigation.navigate('Sign_Up_Screen')}>
+        <Text style={styles.link}>Don't have an account? Sign Up</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity onPress={() => navigation.navigate("Directory_Screen")}>
+        <Text style={styles.guest}>Continue as guest</Text>
       </TouchableOpacity>
       </View>
 
 
-      <Text style={styles.output}>Your email is: {email}</Text>
-      <Text style={styles.output}>Your email is: {password}</Text>
+      <Text>Your email is: {email}</Text>
+      <Text>Your password is: {password ? '●'.repeat(password.length) : ''}</Text>
     </View>
   );
 };
@@ -75,12 +113,11 @@ LoginScreen.navigationOptions = {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    backgroundColor: "#2F362D",
-    paddingBottom:"30%",
-    },
+	container: {
+		flex: 1,
+		padding: 20,
+		justifyContent: 'center',
+	},
   input: {
     height: 48,
     width: "95%",
@@ -145,12 +182,32 @@ const styles = StyleSheet.create({
     fontSize: 15,
   },
   guest: {
-    color: "#fff",  
+    color: "blue",
+		marginTop: 12,
+		textAlign: 'center',
   },
-  output: {
-    color: "#ffd069ff",
-    paddingTop: 4,
-  }
+	button: {
+		marginTop: 12,
+    backgroundColor: '#2b8aef',
+    padding: 12,
+    borderRadius: 6,
+    alignItems: 'center',
+	},
+	buttonText: {
+		color: 'white',
+	},
+	link: {
+		color: 'blue',
+		marginTop: 12,
+		textAlign: 'center',
+	},
+	error: {
+		textAlign: 'center'
+	},
+	title: {
+		textAlign: 'center',
+		fontSize: 24,
+	},
 });
 
 export default LoginScreen;
