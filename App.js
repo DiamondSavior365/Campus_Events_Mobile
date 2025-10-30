@@ -9,6 +9,7 @@ import ChristmasScreen from "./src/screens/ChristmasScreen";
 import DirectoryScreen from "./src/screens/DirectoryScreen";
 import F1_RacerScreen from "./src/screens/F1_RacerScreeen";
 import LoginScreen from "./src/screens/LoginScreen";
+import SportsScreeen from "./src/screens/SportsScreeen";
 
 const navigator = createStackNavigator(
   {
@@ -21,9 +22,10 @@ const navigator = createStackNavigator(
     Christmas_Screen: ChristmasScreen,
     F1_Racer_Screen: F1_RacerScreen,
     Login_Screen: LoginScreen,
+    Sports_Screeen: SportsScreeen,
   },
   {
-    initialRouteName: "Home",
+    initialRouteName: "Sports_Screeen",
     defaultNavigationOptions: {
       title: "Campus Events",
       headerShown: false,
