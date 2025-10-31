@@ -9,9 +9,8 @@ import ChristmasScreen from "./src/screens/ChristmasScreen";
 import DirectoryScreen from "./src/screens/DirectoryScreen";
 import F1_RacerScreen from "./src/screens/F1_RacerScreeen";
 import LoginScreen from "./src/screens/LoginScreen";
-<<<<<<< HEAD
 import SportsScreeen from "./src/screens/SportsScreeen";
-=======
+
 import SignUpScreen from "./src/screens/SignUpScreen"
 import AuthProvider from "./src/lib/supabase/providers/AuthProvider";
 >>>>>>> 954a5adfb243aa446176e4936754373f7762cad3
@@ -27,11 +26,8 @@ const navigator = createStackNavigator(
     Christmas_Screen: ChristmasScreen,
     F1_Racer_Screen: F1_RacerScreen,
     Login_Screen: LoginScreen,
-<<<<<<< HEAD
     Sports_Screeen: SportsScreeen,
-=======
 		Sign_Up_Screen: SignUpScreen,
->>>>>>> 954a5adfb243aa446176e4936754373f7762cad3
   },
   {
     initialRouteName: "Sports_Screeen",
