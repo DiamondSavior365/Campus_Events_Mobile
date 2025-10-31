@@ -11,48 +11,6 @@ const F1_RacerScreen = () => {
 
     <ScrollView style={styles.container}>
       <ImageDetail
-<<<<<<< HEAD
-        title="Event_1"
-        imageSource={require("../../assets/halloween_seal/seal_haunted_trail_1.png")}
-        info="TBD"
-        count={0}
-      />
-      <ImageDetail
-        title="Event_2"
-        imageSource={require("../../assets/halloween_seal/seal_haunted_trail_1.png")}
-        info="TBD"
-        count={0}
-      />
-      <ImageDetail
-        title="Event_3"
-        imageSource={require("../../assets/halloween_seal/seal_haunted_trail_1.png")}
-        info="TBD"
-        count={0}
-      />
-      <ImageDetail
-        title="Event_4"
-        imageSource={require("../../assets/halloween_seal/seal_haunted_trail_1.png")}
-        info="TBD"
-        count={0}
-      />
-      <ImageDetail
-        title="Event_5"
-        imageSource={require("../../assets/halloween_seal/seal_haunted_trail_1.png")}
-        info="TBD"
-        count={0}
-      />
-      <ImageDetail
-        title="Event_6"
-        imageSource={require("../../assets/halloween_seal/seal_haunted_trail_1.png")}
-        info="TBD"
-        count={0}
-      />
-      <ImageDetail
-        title="Event_7"
-        imageSource={require("../../assets/halloween_seal/seal_haunted_trail_1.png")}
-        info="TBD"
-        count={0}
-=======
         title="Seal Speed Circuit"
         imageSource={require("../../assets/F1_seal/Formula 1.png")}
         info="Join us for the annual seal grand prix racing event! Watch daring drivers zoom in Formula 1 race cars, all competing for the legendary golden fish!"
@@ -93,7 +51,6 @@ const F1_RacerScreen = () => {
         imageSource={require("../../assets/F1_seal/super cool seal 2.png")}
         info="Watch driver perform outrageous vehicle tricks and stunts! Who will pull of the coolest trick?"
         count={95}
->>>>>>> 0950a750b35a6f89e69cfcd29225508caab8c9d3
       />
     </ScrollView>
   );

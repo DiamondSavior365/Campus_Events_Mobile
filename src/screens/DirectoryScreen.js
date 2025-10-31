@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import React from "react";
-=======
 import React, { useState, useEffect } from "react";
->>>>>>> 0950a750b35a6f89e69cfcd29225508caab8c9d3
 import {
   Text,
   StyleSheet,
@@ -11,10 +7,6 @@ import {
   TouchableOpacity,
   ScrollView,
 } from "react-native";
-<<<<<<< HEAD
-
-const DirectoryScreen = ({ navigation }) => {
-=======
 import { useAuthContext } from "../lib/supabase/hooks/useAuthContext";
 import SignOutButton from "../lib/supabase/components/SignOutButton";
 
@@ -32,7 +24,6 @@ const DirectoryScreen = ({ navigation }) => {
     }
 	}, [session]);
 
->>>>>>> 0950a750b35a6f89e69cfcd29225508caab8c9d3
   // destructuring the props property to just get navigation
   // console.log(props);
   return (
@@ -64,8 +55,6 @@ const DirectoryScreen = ({ navigation }) => {
           <Text style={styles.button}>Go to F1 Racer Screen</Text>
         </TouchableOpacity>
       </ScrollView>
-<<<<<<< HEAD
-=======
 
 			<SignOutButton>Sign Out</SignOutButton>
 
@@ -79,7 +68,6 @@ const DirectoryScreen = ({ navigation }) => {
 					</TouchableOpacity>
 				</View>
 			)}
->>>>>>> 0950a750b35a6f89e69cfcd29225508caab8c9d3
     </View>
   );
 };

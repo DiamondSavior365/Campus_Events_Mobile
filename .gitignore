@@ -32,10 +32,7 @@ yarn-error.*
 
 # local env files
 .env*.local
-<<<<<<< HEAD
-=======
 .env
->>>>>>> 0950a750b35a6f89e69cfcd29225508caab8c9d3
 
 # typescript
 *.tsbuildinfo
