@@ -26,16 +26,15 @@ const navigator = createStackNavigator(
     Thanksgiving_Screen: ThanksgivingScreen,
     Christmas_Screen: ChristmasScreen,
     F1_Racer_Screen: F1_RacerScreen,
+    Login_Screen: LoginScreen,
+    Sports_Screeen: SportsScreeen,
+		Sign_Up_Screen: SignUpScreen,
   
   },
   {
     initialRouteName: "Home",
  
-    Login_Screen: LoginScreen,
-  
-    Sports_Screeen: SportsScreeen,
- 
-		Sign_Up_Screen: SignUpScreen,
+
   
   },
   {

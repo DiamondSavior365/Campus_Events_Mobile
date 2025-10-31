@@ -26,6 +26,11 @@ const HomeScreen = ({ navigation }) => {
   );
 };
 
+HomeScreen.navigationOptions = {
+  headerShown: false, // Show the header
+  title: "Events",
+};
+
 const styles = StyleSheet.create({
   background: {
     flex: 1,
