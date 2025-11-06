@@ -14,11 +14,12 @@ const DirectoryScreen = ({ navigation }) => {
   return (
     <View>
       <View style={styles.titleBlockStyle}>
-        <Text style={styles.titleStyle}>Your Directory</Text>
-        <Text style={styles.subTitleStyle}>Dropdown for specific events </Text>
+        <Text style={styles.titleStyle}>Current Events</Text>
+        <Text style={styles.subTitleStyle}>Check out more events here! </Text>
       </View>
 
       <ScrollView contentContainerStyle={{ paddingVertical: 10, gap: 10 }}>
+
         <TouchableOpacity
           onPress={() => navigation.navigate("Halloween_Screen")}
         >
@@ -27,7 +28,7 @@ const DirectoryScreen = ({ navigation }) => {
         <TouchableOpacity
           onPress={() => navigation.navigate("Thanksgiving_Screen")}
         >
-          <Text style={styles.button}>Go to Thanksgivng Screen</Text>
+          <Text style={styles.button}>Go to Thanksgiving Screen</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => navigation.navigate("Christmas_Screen")}
@@ -48,22 +49,36 @@ DirectoryScreen.navigationOptions = {
   headerShown: true, // Show the header
   title: "Events",
 };
-
 const styles = StyleSheet.create({
   titleBlockStyle: {
-    backgroundColor: "#00aaff",
+    backgroundColor: "#4b5d54",
+    textShadowColor: "#eae5d9",
     height: 150,
     justifyContent: "center",
     alignItems: "center",
   },
   titleStyle: {
-    fontSize: 34,
+    fontSize: 50,
+    fontFamily: 'serif',
+    color: "#eae5d9",
   },
   subTitleStyle: {
     top: 18,
-    backgroundColor: "gray",
+    fontFamily: 'serif',
+    backgroundColor: "#eae5d9",
     borderRadius: 11,
     paddingHorizontal: 10,
   },
+  button: {
+    fontSize: 45,
+    color: "white",
+    alignSelf: "center",
+    backgroundColor: "#1E9D89",
+    borderRadius: 25,
+    paddingHorizontal: 5,
+    marginBottom: 105,
+    opacity: 0.7,
+
+  }
 });
 export default DirectoryScreen;
