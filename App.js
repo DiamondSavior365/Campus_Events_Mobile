@@ -9,6 +9,13 @@ import ChristmasScreen from "./src/screens/ChristmasScreen";
 import DirectoryScreen from "./src/screens/DirectoryScreen";
 import F1_RacerScreen from "./src/screens/F1_RacerScreeen";
 
+import LoginScreen from "./src/screens/LoginScreen";
+import SportsScreeen from "./src/screens/SportsScreeen";
+import SignUpScreen from "./src/screens/SignUpScreen"
+import AuthProvider from "./src/lib/supabase/providers/AuthProvider";
+  
+  
+
 const navigator = createStackNavigator(
   {
     Home: HomeScreen,
@@ -19,9 +26,20 @@ const navigator = createStackNavigator(
     Thanksgiving_Screen: ThanksgivingScreen,
     Christmas_Screen: ChristmasScreen,
     F1_Racer_Screen: F1_RacerScreen,
+    Login_Screen: LoginScreen,
+    Sports_Screeen: SportsScreeen,
+		Sign_Up_Screen: SignUpScreen,
+  
   },
   {
     initialRouteName: "Home",
+ 
+
+  
+  },
+  {
+    initialRouteName: "Sports_Screeen",
+
     defaultNavigationOptions: {
       title: "Campus Events",
       headerShown: false,
@@ -29,4 +47,15 @@ const navigator = createStackNavigator(
   }
 );
 
-export default createAppContainer(navigator);
+
+const AppContainer = createAppContainer(navigator);
+const RootApp = () => <AppContainer />;
+
+const App = () => (
+	<AuthProvider>
+		<RootApp />
+	</AuthProvider>
+);
+
+export default App;
+

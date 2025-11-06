@@ -8,21 +8,27 @@ import {
 } from "react-native";
 
 const HomeScreen = ({ navigation }) => {
-  // destructuring the props property to just get navigation
-  // console.log(props);
   return (
     <ImageBackground
       source={require("../../assets/background_one.png")}
       style={styles.background}
       resizeMode="cover"
     >
-      <Text style={styles.text}>Campus Events!!</Text>
+      <Text style={styles.text}>Campus Events</Text>
 
-      <TouchableOpacity onPress={() => navigation.navigate("Directory_Screen")}>
-        <Text style={styles.button}>Click to Enter</Text>
+      <TouchableOpacity onPress={() => navigation.navigate("Login_Screen")}>
+        <Text style={styles.button}>Press to Enter</Text>
       </TouchableOpacity>
+      {/* <TouchableOpacity onPress={() => navigation.navigate("Directory_Screen")}>
+        <Text style={styles.button}>Click to Enter</Text>
+      </TouchableOpacity> */}
     </ImageBackground>
   );
+};
+
+HomeScreen.navigationOptions = {
+  headerShown: false, // Show the header
+  title: "Events",
 };
 
 const styles = StyleSheet.create({
@@ -35,20 +41,28 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 50,
-    color: "white", // ensures text is visible on darker images
+    color: "white",
     position: "absolute",
     top: 120,
     alignSelf: "center",
+    fontWeight: "bold",
+    //fontFamily: "American Typewriter",
   },
+
   button: {
-    fontSize: 45,
-    color: "white", // ensures text is visible on darker images
-    position: "absolute",
-    bottom: -350,
-    alignSelf: "center",
-    backgroundColor: "#1E9DB9",
-    borderRadius: 25,
-    paddingHorizontal: 24,
+  fontSize: 45,
+  color: "white",
+  position: "absolute",
+  bottom: -350,
+  alignSelf: "center",
+  borderRadius:55,
+  paddingHorizontal: 24,
+  paddingVertical: 8,
+
+  // Liquid glass
+  backgroundColor: "rgba(30, 157, 185, 0.40)", 
+  borderWidth: 1,
+  borderColor: "rgba(255, 255, 255, 0.55)", 
   },
 });
 
