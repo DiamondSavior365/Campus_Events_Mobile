@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { useAuthContext } from "../lib/supabase/hooks/useAuthContext";
 import SignOutButton from "../lib/supabase/components/SignOutButton";
+//import { hoverGestureHandlerProps } from "react-native-gesture-handler/lib/typescript/handlers/gestures/hoverGesture";
 
 const DirectoryScreen = ({ navigation }) => {
 	const [metadata, setMetadata] = useState(null);
@@ -30,7 +31,6 @@ const DirectoryScreen = ({ navigation }) => {
     <View>
       <View style={styles.titleBlockStyle}>
         <Text style={styles.titleStyle}>Current Events</Text>
-        <Text style={styles.subTitleStyle}>Check out more events here! </Text>
       </View>
 
       <ScrollView contentContainerStyle={{ paddingVertical: 10, gap: 10 }}>
@@ -38,22 +38,27 @@ const DirectoryScreen = ({ navigation }) => {
         <TouchableOpacity
           onPress={() => navigation.navigate("Halloween_Screen")}
         >
-          <Text style={styles.button}>Go to Halloween Screen</Text>
+          <Text style={styles.button}>Halloween Events</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => navigation.navigate("Thanksgiving_Screen")}
         >
-          <Text style={styles.button}>Go to Thanksgiving Screen</Text>
+          <Text style={styles.button}>Thanksgiving Events</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => navigation.navigate("Christmas_Screen")}
         >
-          <Text style={styles.button}>Go to Christmas Screen</Text>
+          <Text style={styles.button}>Christmas Events</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => navigation.navigate("F1_Racer_Screen")}
         >
-          <Text style={styles.button}>Go to F1 Racer Screen</Text>
+          <Text style={styles.button}>F1 Racer Events</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => navigation.navigate("Sports_Screeen")}
+        >
+          <Text style={styles.button}>Sports Events</Text>
         </TouchableOpacity>
       </ScrollView>
 
@@ -97,16 +102,28 @@ const styles = StyleSheet.create({
     borderRadius: 11,
     paddingHorizontal: 10,
   },
-  button: {
-    fontSize: 45,
+  button: { // button design
+    width: 350,
+    height: 95,
+    fontSize: 28,
+    fontFamily: 'serif',
     color: "white",
     alignSelf: "center",
-    backgroundColor: "#1E9D89",
+    textAlign: "center",
+    //backgroundColor: "#1E9D89",
     borderRadius: 25,
-    paddingHorizontal: 5,
-    marginBottom: 105,
-    opacity: 0.7,
-
-  }
+    paddingHorizontal: 25,
+    paddingVertical: 25,
+    marginBottom: 10,
+    //shadowRadius: 50,
+    //shadowColor: "rgba(0, 0, 0, 0.1)",
+    //shadowOffset: {width: 1, height: 15},
+    //elevation: 6,
+    //opacity: 0.7,
+    // Liquid glass
+    backgroundColor: "rgba(30, 156, 185, 0.52)", 
+    borderWidth: 1,
+    borderColor: "rgba(0, 0, 0, 0.57)",
+  },
 });
 export default DirectoryScreen;
