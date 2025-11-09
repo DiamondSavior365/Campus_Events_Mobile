@@ -6,6 +6,7 @@ import {
   TextInput,
   TouchableOpacity,
   ActivityIndicator,
+  Image,
 } from "react-native";
 import { StackActions, NavigationActions } from "react-navigation";
 import { supabase } from "../lib/supabase/supabase";
@@ -56,6 +57,10 @@ const LoginScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
+      <Image 
+        source={require("../../assets/login-icon.png")}
+        style={styles.logoImage}
+      />
       <Text style={styles.title}>Login</Text>
       <TextInput
         style={styles.input}
@@ -120,6 +125,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     justifyContent: "center",
+    paddingBottom: "12%"
   },
   input: {
     height: 48,
@@ -137,29 +143,6 @@ const styles = StyleSheet.create({
     height: 200,
     resizeMode: "cover",
     alignSelf: "center",
-  },
-  titleBlockStyle: {
-    //backgroundColor: "#0382A5",
-    height: "50%",
-    justifyContent: "center",
-    alignItems: "center",
-    width: "60%",
-    alignSelf: "center",
-    borderRadius: 24,
-  },
-  titleStyle: {
-    fontSize: 34,
-    color: "#fff",
-    fontWeight: "600",
-  },
-  subTitleStyle: {
-    marginTop: 8,
-    //backgroundColor: "#0382A5",
-    borderRadius: 4,
-    paddingHorizontal: 15,
-    color: "#fff",
-    paddingVertical: 4,
-    overflow: "hidden",
   },
   button: {
     backgroundColor: "#0382A5",
@@ -210,6 +193,7 @@ const styles = StyleSheet.create({
   title: {
     textAlign: "center",
     fontSize: 24,
+    paddingBottom: 12
   },
 });
 
