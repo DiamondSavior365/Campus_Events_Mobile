@@ -6,6 +6,7 @@ import {
   ImageBackground,
   Animated,
   TouchableOpacity,
+  Platform,
 } from "react-native";
 
 const AnimatedImageBackground =
@@ -68,7 +69,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   text: {
-    fontSize: 50,
+    fontSize: Platform.OS === "android" ? 55 : 50,
     color: "white",
     position: "absolute",
     top: 120,
