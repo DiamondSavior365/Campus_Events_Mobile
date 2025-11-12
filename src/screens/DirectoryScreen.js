@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
+  Animated,
   Text,
   StyleSheet,
   View,
@@ -7,123 +8,185 @@ import {
   TouchableOpacity,
   ScrollView,
 } from "react-native";
+
 import { useAuthContext } from "../lib/supabase/hooks/useAuthContext";
 import SignOutButton from "../lib/supabase/components/SignOutButton";
-//import { hoverGestureHandlerProps } from "react-native-gesture-handler/lib/typescript/handlers/gestures/hoverGesture";
 
 const DirectoryScreen = ({ navigation }) => {
-	const [metadata, setMetadata] = useState(null);
-	const { session } = useAuthContext();
+  const [metadata, setMetadata] = useState(null);
+  const { session } = useAuthContext();
 
-	// fetching user's metadata from their profile
-	useEffect(() => {
-		if (session?.user) {
+  const scaleAnim = useRef(new Animated.Value(2)).current;
+
+  useEffect(() => {
+    Animated.loop(
+      Animated.sequence([
+        Animated.timing(scaleAnim, {
+          toValue: 1.1,     
+          duration: 4500,
+          useNativeDriver: true,
+        }),
+        Animated.timing(scaleAnim, {
+          toValue: 1,    
+          duration: 4500,
+          useNativeDriver: true,
+        }),
+      ])
+    ).start();
+  }, [scaleAnim]);
+
+  useEffect(() => {
+    if (session?.user) {
       setMetadata(session.user.user_metadata);
     } else {
-      // If there is no session, clear the metadata
       setMetadata(null);
     }
-	}, [session]);
+  }, [session]);
 
-  // destructuring the props property to just get navigation
-  // console.log(props);
+  const EventButton = ({ title, image, onPress }) => (
+    <TouchableOpacity onPress={onPress} activeOpacity={0.8}>
+      <View style={styles.eventButton}>
+        <Animated.Image
+          source={image}
+          style={[
+            styles.animatedImage, 
+            { transform: [{ scale: scaleAnim }] },
+          ]}
+          resizeMode="contain"
+        />
+        <Text style={styles.eventText}>{title}</Text>
+      </View>
+    </TouchableOpacity>
+  );
+
   return (
-    <View>
+    <View style={styles.container}>
       <View style={styles.titleBlockStyle}>
         <Text style={styles.titleStyle}>Current Events</Text>
       </View>
 
-      <ScrollView contentContainerStyle={{ paddingVertical: 10, gap: 10 }}>
-
-        <TouchableOpacity
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
+        <EventButton
+          title="Halloween Events"
+          image={require("../../assets/button_Images/halloween_button.png")}
           onPress={() => navigation.navigate("Halloween_Screen")}
-        >
-          <Text style={styles.button}>Halloween Events</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
+        />
+
+        <EventButton
+          title="Thanksgiving Events"
+          image={require("../../assets/button_Images/thanksgiving_button.png")}
           onPress={() => navigation.navigate("Thanksgiving_Screen")}
-        >
-          <Text style={styles.button}>Thanksgiving Events</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
+        />
+
+        <EventButton
+          title="Christmas Events"
+          image={require("../../assets/button_Images/christmas_button.png")}
           onPress={() => navigation.navigate("Christmas_Screen")}
-        >
-          <Text style={styles.button}>Christmas Events</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
+        />
+
+        <EventButton
+          title="F1 Racer Events"
+          image={require("../../assets/button_Images/f1_button.png")}
           onPress={() => navigation.navigate("F1_Racer_Screen")}
-        >
-          <Text style={styles.button}>F1 Racer Events</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
+        />
+
+        <EventButton
+          title="Sports Events"
+          image={require("../../assets/button_Images/sports_button.png")}
           onPress={() => navigation.navigate("Sports_Screeen")}
-        >
-          <Text style={styles.button}>Sports Events</Text>
-        </TouchableOpacity>
+        />
       </ScrollView>
 
-			<SignOutButton>Sign Out</SignOutButton>
+      <SignOutButton>Sign Out</SignOutButton>
 
-			{metadata != null ? (
-				<Text>Welcome, {metadata.full_name}. You are logged in.</Text>
-			) : (
-				<View>
-					<Text>You are not logged in.</Text>
-					<TouchableOpacity onPress={() => navigation.navigate("Login_Screen")}>
-						<Text styles={styles.button}>Login</Text>
-					</TouchableOpacity>
-				</View>
-			)}
+      {metadata ? (
+        <Text style={styles.welcomeText}>
+          Welcome, {metadata.full_name}. You are logged in.
+        </Text>
+      ) : (
+        <View>
+          <Text>You are not logged in.</Text>
+          <TouchableOpacity onPress={() => navigation.navigate("Login_Screen")}>
+            <Text style={styles.loginButton}>Login</Text>
+          </TouchableOpacity>
+        </View>
+      )}
     </View>
   );
 };
 
 DirectoryScreen.navigationOptions = {
-  headerShown: true, // Show the header
+  headerShown: true,
   title: "Events",
 };
+
 const styles = StyleSheet.create({
+  animatedImage: {
+    position: "absolute",
+    width: "120%",     
+    height: "120%",
+    top: "-10%",       
+    left: "-10%",
+    opacity: 0.95,
+    borderRadius: 16,
+  },
+  container: {
+    flex: 1,
+    backgroundColor: "#F5F5F5",
+  },
   titleBlockStyle: {
-    backgroundColor: "#4b5d54",
-    textShadowColor: "#eae5d9",
-    height: 150,
+    backgroundColor: "#455A64",
+    height: 90,
     justifyContent: "center",
     alignItems: "center",
   },
   titleStyle: {
-    fontSize: 50,
-    fontFamily: 'serif',
-    color: "#eae5d9",
+    fontSize: 30,
+    fontWeight: "600",
+    color: "#E8E8E8",
   },
-  subTitleStyle: {
-    top: 18,
-    fontFamily: 'serif',
-    backgroundColor: "#eae5d9",
-    borderRadius: 11,
-    paddingHorizontal: 10,
+  scrollContainer: {
+    paddingVertical: 20,
+    alignItems: "center",
+    gap: 15,
   },
-  button: { // button design
-    width: 350,
-    height: 95,
-    fontSize: 28,
-    fontFamily: 'serif',
+  eventButton: {
+    width: 380,
+    height: 150,
+    justifyContent: "center",
+    outlineColor: "black",
+    outlineStyle: "solid",
+    outlineWidth: 2,
+    alignItems: "center",
+    borderRadius: 16,
+    overflow: "hidden",
+    backgroundColor: "#f0f0f0",
+  },
+  eventImage: {
+    borderRadius: 16,
+    opacity: 0.95,
+    resizeMode: "contain",
+  },
+  eventText: {
     color: "white",
-    alignSelf: "center",
+    fontSize: 30,
+    fontWeight: "600",
+    textShadowColor: "#000",
+    textShadowOffset: { width: 1, height: 1 },
+    textShadowRadius: 3,
+  },
+  welcomeText: {
     textAlign: "center",
-    //backgroundColor: "#1E9D89",
-    borderRadius: 25,
-    paddingHorizontal: 25,
-    paddingVertical: 25,
-    marginBottom: 10,
-    //shadowRadius: 50,
-    //shadowColor: "rgba(0, 0, 0, 0.1)",
-    //shadowOffset: {width: 1, height: 15},
-    //elevation: 6,
-    //opacity: 0.7,
-    // Liquid glass
-    backgroundColor: "rgba(30, 156, 185, 0.52)", 
-    borderWidth: 1,
-    borderColor: "rgba(0, 0, 0, 0.57)",
+    marginVertical: 10,
+  },
+  loginButton: {
+    allignSelf: "center",
+    width: 100,
+    height: 50,
+    textAlign: "center",
+    marginTop: 5,
+    color: "#007AFF",
   },
 });
+
 export default DirectoryScreen;
