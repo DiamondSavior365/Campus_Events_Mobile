@@ -12,18 +12,18 @@ import SignOutButton from "../lib/supabase/components/SignOutButton";
 //import { hoverGestureHandlerProps } from "react-native-gesture-handler/lib/typescript/handlers/gestures/hoverGesture";
 
 const DirectoryScreen = ({ navigation }) => {
-	const [metadata, setMetadata] = useState(null);
-	const { session } = useAuthContext();
+  const [metadata, setMetadata] = useState(null);
+  const { session } = useAuthContext();
 
-	// fetching user's metadata from their profile
-	useEffect(() => {
-		if (session?.user) {
+  // fetching user's metadata from their profile
+  useEffect(() => {
+    if (session?.user) {
       setMetadata(session.user.user_metadata);
     } else {
       // If there is no session, clear the metadata
       setMetadata(null);
     }
-	}, [session]);
+  }, [session]);
 
   // destructuring the props property to just get navigation
   // console.log(props);
@@ -34,7 +34,6 @@ const DirectoryScreen = ({ navigation }) => {
       </View>
 
       <ScrollView contentContainerStyle={{ paddingVertical: 10, gap: 10 }}>
-
         <TouchableOpacity
           onPress={() => navigation.navigate("Halloween_Screen")}
         >
@@ -55,25 +54,26 @@ const DirectoryScreen = ({ navigation }) => {
         >
           <Text style={styles.button}>F1 Racer Events</Text>
         </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => navigation.navigate("Sports_Screeen")}
-        >
+        <TouchableOpacity onPress={() => navigation.navigate("Sports_Screeen")}>
           <Text style={styles.button}>Sports Events</Text>
         </TouchableOpacity>
       </ScrollView>
 
-			<SignOutButton>Sign Out</SignOutButton>
+      <SignOutButton>Sign Out</SignOutButton>
 
-			{metadata != null ? (
-				<Text>Welcome, {metadata.full_name}. You are logged in.</Text>
-			) : (
-				<View>
-					<Text>You are not logged in.</Text>
-					<TouchableOpacity onPress={() => navigation.navigate("Login_Screen")}>
-						<Text styles={styles.button}>Login</Text>
-					</TouchableOpacity>
-				</View>
-			)}
+      {metadata != null ? (
+        <Text>Welcome, {metadata.full_name}. You are logged in.</Text>
+      ) : (
+        <View>
+          <Text>You are not logged in.</Text>
+          <TouchableOpacity onPress={() => navigation.navigate("Login_Screen")}>
+            <Text styles={styles.button}>Login</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate("Home")}>
+            <Text styles={styles.button}>Go Home</Text>
+          </TouchableOpacity>
+        </View>
+      )}
     </View>
   );
 };
@@ -92,21 +92,22 @@ const styles = StyleSheet.create({
   },
   titleStyle: {
     fontSize: 50,
-    fontFamily: 'serif',
+    fontFamily: "serif",
     color: "#eae5d9",
   },
   subTitleStyle: {
     top: 18,
-    fontFamily: 'serif',
+    fontFamily: "serif",
     backgroundColor: "#eae5d9",
     borderRadius: 11,
     paddingHorizontal: 10,
   },
-  button: { // button design
+  button: {
+    // button design
     width: 350,
     height: 95,
     fontSize: 28,
-    fontFamily: 'serif',
+    fontFamily: "serif",
     color: "white",
     alignSelf: "center",
     textAlign: "center",
@@ -121,7 +122,7 @@ const styles = StyleSheet.create({
     //elevation: 6,
     //opacity: 0.7,
     // Liquid glass
-    backgroundColor: "rgba(30, 156, 185, 0.52)", 
+    backgroundColor: "rgba(30, 156, 185, 0.52)",
     borderWidth: 1,
     borderColor: "rgba(0, 0, 0, 0.57)",
   },
