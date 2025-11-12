@@ -16,7 +16,7 @@ const DirectoryScreen = ({ navigation }) => {
   const [metadata, setMetadata] = useState(null);
   const { session } = useAuthContext();
 
-  const scaleAnim = useRef(new Animated.Value(2)).current;
+  const scaleAnim = useRef(new Animated.Value(1)).current;
 
   useEffect(() => {
     Animated.loop(
