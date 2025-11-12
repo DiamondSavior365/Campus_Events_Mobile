@@ -8,7 +8,8 @@ import {
   TouchableOpacity,
 } from "react-native";
 
-const AnimatedImageBackground = Animated.createAnimatedComponent(ImageBackground);
+const AnimatedImageBackground =
+  Animated.createAnimatedComponent(ImageBackground);
 
 const HomeScreen = ({ navigation }) => {
   const scaleAnim = useRef(new Animated.Value(1)).current;
@@ -51,7 +52,7 @@ const HomeScreen = ({ navigation }) => {
 
 HomeScreen.navigationOptions = {
   headerShown: false,
-  title: "Events",
+  title: "Home",
 };
 
 const styles = StyleSheet.create({
@@ -59,7 +60,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   background: {
-    ...StyleSheet.absoluteFillObject, 
+    ...StyleSheet.absoluteFillObject,
   },
   overlay: {
     flex: 1,
@@ -67,7 +68,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   text: {
-    fontSize: 55,
+    fontSize: 50,
     color: "white",
     position: "absolute",
     top: 120,

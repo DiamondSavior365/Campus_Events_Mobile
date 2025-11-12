@@ -4,7 +4,6 @@ import {
   Text,
   StyleSheet,
   View,
-  ImageBackground,
   TouchableOpacity,
   ScrollView,
 } from "react-native";
@@ -42,6 +41,18 @@ const DirectoryScreen = ({ navigation }) => {
       setMetadata(null);
     }
   }, [session]);
+
+  // ✅ New wrapper for SignOutButton that also navigates home
+  const handleSignOut = async () => {
+    try {
+      // Trigger whatever logic your SignOutButton runs internally
+      // You can call its onPress manually if needed —
+      // but simplest is to just wrap it in a TouchableOpacity
+      navigation.navigate("Home");
+    } catch (error) {
+      console.error("Error during sign out:", error);
+    }
+  };
 
   const EventButton = ({ title, image, onPress }) => (
     <TouchableOpacity onPress={onPress} activeOpacity={0.8}>
@@ -94,7 +105,16 @@ const DirectoryScreen = ({ navigation }) => {
         />
       </ScrollView>
 
-      <SignOutButton>Sign Out</SignOutButton>
+      {/* ✅ Wrap your existing SignOutButton so it navigates home */}
+      <TouchableOpacity
+        activeOpacity={0.8}
+        onPress={() => {
+          // Let SignOutButton handle sign-out, then navigate Home
+          handleSignOut();
+        }}
+      >
+        <SignOutButton>Sign Out</SignOutButton>
+      </TouchableOpacity>
 
       {metadata ? (
         <Text style={styles.welcomeText}>
@@ -102,21 +122,35 @@ const DirectoryScreen = ({ navigation }) => {
         </Text>
       ) : (
         <View>
-          <Text>You are not logged in.</Text>
-          <TouchableOpacity onPress={() => navigation.navigate("Login_Screen")}>
-            <Text style={styles.loginButton}>Login</Text>
-          </TouchableOpacity>
+          <Text style={styles.welcomeText}>You are not logged in.</Text>
         </View>
       )}
     </View>
   );
 };
 
-DirectoryScreen.navigationOptions = {
+// DirectoryScreen.navigationOptions = {
+//   headerShown: true,
+//   title: "Directory",
+// };
+DirectoryScreen.navigationOptions = ({ navigation }) => ({
   headerShown: true,
-  title: "Events",
-};
-
+  title: "Directory",
+  headerLeft: () => (
+    <TouchableOpacity onPress={() => navigation.navigate("Home")}>
+      <Text
+        style={{
+          color: "#007AFF",
+          marginLeft: 15,
+          fontSize: 16,
+          fontWeight: "bold",
+        }}
+      >
+        &lt; Home
+      </Text>
+    </TouchableOpacity>
+  ),
+});
 const styles = StyleSheet.create({
   animatedImage: {
     position: "absolute",
@@ -159,11 +193,6 @@ const styles = StyleSheet.create({
     overflow: "hidden",
     backgroundColor: "#f0f0f0",
   },
-  eventImage: {
-    borderRadius: 16,
-    opacity: 0.95,
-    resizeMode: "contain",
-  },
   eventText: {
     color: "white",
     fontSize: 30,
@@ -174,15 +203,17 @@ const styles = StyleSheet.create({
   },
   welcomeText: {
     textAlign: "center",
-    marginVertical: 10,
+    // marginVertical: 10,
+    paddingBottom: 30,
   },
   loginButton: {
-    allignSelf: "center",
+    alignSelf: "center",
     width: 100,
     height: 50,
     textAlign: "center",
     marginTop: 5,
     color: "#007AFF",
+    justifyContent: "center",
   },
 });
 

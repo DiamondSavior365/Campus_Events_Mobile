@@ -57,7 +57,7 @@ const LoginScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Image 
+      <Image
         source={require("../../assets/login-icon.png")}
         style={styles.logoImage}
       />
@@ -107,17 +107,17 @@ const LoginScreen = ({ navigation }) => {
       </TouchableOpacity>
       {/* </View> */}
 
-      <Text>Your email is: {email}</Text>
+      {/* <Text>Your email is: {email}</Text>
       <Text>
         Your password is: {password ? "●".repeat(password.length) : ""}
-      </Text>
+      </Text> */}
     </View>
   );
 };
 
 LoginScreen.navigationOptions = {
   headerShown: true, // Show the header
-  title: "Events",
+  title: "Login",
 };
 
 const styles = StyleSheet.create({
@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     justifyContent: "center",
-    paddingBottom: "12%"
+    paddingBottom: "12%",
   },
   input: {
     height: 48,
@@ -193,7 +193,7 @@ const styles = StyleSheet.create({
   title: {
     textAlign: "center",
     fontSize: 24,
-    paddingBottom: 12
+    paddingBottom: 12,
   },
 });
 
