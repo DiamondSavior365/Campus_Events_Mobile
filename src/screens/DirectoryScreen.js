@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   ScrollView,
 } from "react-native";
-
+import { Video } from "expo-av";
 import { useAuthContext } from "../lib/supabase/hooks/useAuthContext";
 import SignOutButton from "../lib/supabase/components/SignOutButton";
 
@@ -69,6 +69,14 @@ const DirectoryScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
+      <Video
+        source={require("../../assets/Background_Videos/water_feature_1.mp4")}
+        style={StyleSheet.absoluteFill}
+        shouldPlay
+        isLooping
+        isMuted
+        resizeMode="cover"
+      />
       <View style={styles.titleBlockStyle}>
         <Text style={styles.titleStyle}>Current Events</Text>
       </View>
@@ -166,7 +174,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#F5F5F5",
   },
   titleBlockStyle: {
-    backgroundColor: "#455A64",
+    // backgroundColor: "#455A64",
+    backgroundColor: "rgba(69, 90, 100, 0.6)",
     height: 90,
     justifyContent: "center",
     alignItems: "center",
@@ -174,7 +183,10 @@ const styles = StyleSheet.create({
   titleStyle: {
     fontSize: 30,
     fontWeight: "600",
-    color: "#E8E8E8",
+    color: "#FFFFFF", // pure white
+    textShadowColor: "rgba(0,0,0,0.7)", // optional for extra pop
+    textShadowOffset: { width: 0, height: 1 },
+    textShadowRadius: 2,
   },
   scrollContainer: {
     paddingVertical: 20,
