@@ -133,24 +133,24 @@ const DirectoryScreen = ({ navigation }) => {
 //   headerShown: true,
 //   title: "Directory",
 // };
-DirectoryScreen.navigationOptions = ({ navigation }) => ({
-  headerShown: true,
-  title: "Directory",
-  headerLeft: () => (
-    <TouchableOpacity onPress={() => navigation.navigate("Home")}>
-      <Text
-        style={{
-          color: "#007AFF",
-          marginLeft: 15,
-          fontSize: 16,
-          fontWeight: "bold",
-        }}
-      >
-        &lt; Home
-      </Text>
-    </TouchableOpacity>
-  ),
-});
+// DirectoryScreen.navigationOptions = ({ navigation }) => ({
+//   headerShown: true,
+//   title: "Directory",
+//   headerLeft: () => (
+//     <TouchableOpacity onPress={() => navigation.navigate("Home")}>
+//       <Text
+//         style={{
+//           color: "#007AFF",
+//           marginLeft: 15,
+//           fontSize: 16,
+//           fontWeight: "bold",
+//         }}
+//       >
+//         &lt; Home
+//       </Text>
+//     </TouchableOpacity>
+//   ),
+// });
 const styles = StyleSheet.create({
   animatedImage: {
     position: "absolute",

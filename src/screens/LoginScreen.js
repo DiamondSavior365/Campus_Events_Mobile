@@ -8,7 +8,7 @@ import {
   ActivityIndicator,
   Image,
 } from "react-native";
-import { StackActions, NavigationActions } from "react-navigation";
+import { CommonActions } from "@react-navigation/native";
 import { supabase } from "../lib/supabase/supabase";
 import { useAuthContext } from "../lib/supabase/hooks/useAuthContext";
 
@@ -39,13 +39,19 @@ const LoginScreen = ({ navigation }) => {
       } else {
         // Signed in — session will be available via AuthProvider's onAuthStateChange.
         // navigates the user to directory screen upon login:
-        const resetAction = StackActions.reset({
-          index: 0,
-          actions: [
-            NavigationActions.navigate({ routeName: "Directory_Screen" }),
-          ],
-        });
-        navigation.dispatch(resetAction);
+        // const resetAction = StackActions.reset({
+        //   index: 0,
+        //   actions: [
+        //     NavigationActions.navigate({ routeName: "Directory_Screen" }),
+        //   ],
+        // });
+        // navigation.dispatch(resetAction);
+        navigation.dispatch(
+          CommonActions.reset({
+            index: 0,
+            routes: [{ name: "Directory_Screen" }],
+          })
+        );
       }
     } catch (err) {
       console.error("Unexpected sign-in error", err);
@@ -115,10 +121,10 @@ const LoginScreen = ({ navigation }) => {
   );
 };
 
-LoginScreen.navigationOptions = {
-  headerShown: true, // Show the header
-  title: "Login",
-};
+// LoginScreen.navigationOptions = {
+//   headerShown: true, // Show the header
+//   title: "Login",
+// };
 
 const styles = StyleSheet.create({
   container: {

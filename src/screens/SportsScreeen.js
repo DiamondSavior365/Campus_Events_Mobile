@@ -57,11 +57,11 @@ const SportsScreeen = () => {
 };
 
 // Add navigation options **here, after the component**
-SportsScreeen.navigationOptions = {
-  headerShown: true, // Show the header
-  title: "Events",
-};
+// SportsScreeen.navigationOptions = {
+//   headerShown: true, // Show the header
+//   title: "Events",
+// };
 
 const styles = StyleSheet.create({});
 
-export default SportsScreeen ;
+export default SportsScreeen;

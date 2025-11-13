@@ -57,11 +57,11 @@ const F1_RacerScreen = () => {
 };
 
 // Add navigation options **here, after the component**
-F1_RacerScreen.navigationOptions = {
-  headerShown: true, // Show the header
-  title: "Events",
-};
+// F1_RacerScreen.navigationOptions = {
+//   headerShown: true, // Show the header
+//   title: "Events",
+// };
 
 const styles = StyleSheet.create({});
 
-export default F1_RacerScreen ;
+export default F1_RacerScreen;
