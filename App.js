@@ -1,3 +1,4 @@
+import { Image, View } from "react-native";
 import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -22,11 +23,42 @@ function RootApp() {
       <Stack.Navigator
         initialRouteName="Home"
         screenOptions={{
-          title: "",
           headerShown: false,
+          headerTitle : "",
+          headerStyle: {
+            backgroundColor: "#1b6ab9ff",
+          },
+          headerTintColor: "#dadde0ff",
+
+          headerRight: () => (
+            <View
+              style={{
+                width: 50,
+                height: 50,
+                borderRadius: 9999,
+                overflow: "hidden",
+                borderWidth: 1.5,
+                borderColor: "white",
+                marginRight: 12,    // pushes away from the screen edge
+              }}
+            >
+              <Image
+                source={require("./assets/logo.png")}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  resizeMode: "cover",
+                }}
+              />
+            </View>
+          ),
         }}
       >
-        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen 
+          name="Home" 
+          component={HomeScreen} 
+          options = {{ headerShown: false }}
+          />
         <Stack.Screen
           name="Event_List"
           component={EventList}
