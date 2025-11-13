@@ -37,10 +37,10 @@ const ListScreen = () => {
   );
 };
 // Add navigation options **here, after the component**
-ListScreen.navigationOptions = {
-  headerShown: true, // Show the header
-  title: "Events",
-};
+// ListScreen.navigationOptions = {
+//   headerShown: true, // Show the header
+//   title: "Events",
+// };
 const styles = StyleSheet.create({
   textStyle: {
     marginVertical: 50,

@@ -51,10 +51,10 @@ const HomeScreen = ({ navigation }) => {
   );
 };
 
-HomeScreen.navigationOptions = {
-  headerShown: false,
-  title: "Home",
-};
+// HomeScreen.navigationOptions = {
+//   headerShown: false,
+//   title: "Home",
+// };
 
 const styles = StyleSheet.create({
   container: {

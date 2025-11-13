@@ -57,10 +57,10 @@ const ImageScreen = () => {
 };
 
 // Add navigation options **here, after the component**
-ImageScreen.navigationOptions = {
-  headerShown: true, // Show the header
-  title: "Events",
-};
+// ImageScreen.navigationOptions = {
+//   headerShown: true, // Show the header
+//   title: "Events",
+// };
 
 const styles = StyleSheet.create({});
 
