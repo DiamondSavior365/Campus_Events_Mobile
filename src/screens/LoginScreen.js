@@ -11,6 +11,8 @@ import {
 import { CommonActions } from "@react-navigation/native";
 import { supabase } from "../lib/supabase/supabase";
 import { useAuthContext } from "../lib/supabase/hooks/useAuthContext";
+import { Video } from "expo-av";
+
 const LoginScreen = ({ navigation }) => {
   const { isLoading: authLoading } = useAuthContext(); // optional: read global loading
   const [email, setEmail] = useState("");
@@ -62,6 +64,15 @@ const LoginScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
+      <Video
+        source={require("../../assets/Background_Videos/seal_video_2.mp4")}
+        style={StyleSheet.absoluteFill}
+        shouldPlay
+        isLooping
+        isMuted
+        resizeMode="cover"
+      />
+
       <Image
         source={require("../../assets/login-icon.png")}
         style={styles.logoImage}

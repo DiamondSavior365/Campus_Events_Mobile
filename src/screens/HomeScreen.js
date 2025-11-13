@@ -7,6 +7,7 @@ import {
   Animated,
   TouchableOpacity,
   Platform,
+  Dimensions,
 } from "react-native";
 
 const AnimatedImageBackground =
@@ -55,7 +56,8 @@ const HomeScreen = ({ navigation }) => {
 //   headerShown: false,
 //   title: "Home",
 // };
-
+const { width, height } = Dimensions.get("window");
+const scale = width / 375;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -69,7 +71,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   text: {
-    fontSize: Platform.OS === "android" ? 55 : 50,
+    // fontSize: Platform.OS === "android" ? 55 : 50,
+    fontSize: 45 * scale,
     color: "white",
     position: "absolute",
     top: 120,
