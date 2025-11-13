@@ -68,7 +68,7 @@ function RootApp() {
           options={{ headerShown: true }}
         />
         <Stack.Screen
-          name="Sports_Screen"
+          name="Sports_Screeen"
           component={SportsScreeen}
           options={{ headerShown: true }}
         />
