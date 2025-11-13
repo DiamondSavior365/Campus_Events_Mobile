@@ -97,7 +97,7 @@ function RootApp() {
         <Stack.Screen
           name="Login_Screen"
           component={LoginScreen}
-          options={{ headerShown: false }}
+          options={{ headerShown: true, headerTransparent: true }}
         />
         <Stack.Screen
           name="Sports_Screeen"
