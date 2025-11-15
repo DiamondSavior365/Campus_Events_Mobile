@@ -14,6 +14,7 @@ import LoginScreen from "./src/screens/LoginScreen";
 import SportsScreeen from "./src/screens/SportsScreeen";
 import SignUpScreen from "./src/screens/SignUpScreen";
 import AuthProvider from "./src/lib/supabase/providers/AuthProvider";
+import EventListScreen from "./src/screens/EventListScreen";
 
 const Stack = createStackNavigator();
 
@@ -41,6 +42,11 @@ function RootApp() {
         <Stack.Screen
           name="Directory_Screen"
           component={DirectoryScreen}
+          options={{ headerShown: true }}
+        />
+        <Stack.Screen
+          name="EventListScreen"
+          component={EventListScreen}
           options={{ headerShown: true }}
         />
         <Stack.Screen

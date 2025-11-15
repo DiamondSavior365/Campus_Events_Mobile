@@ -4,113 +4,99 @@ const events = {
       id: "halloween_001",
       title: "Haunted Trail",
       description:
-        "Brave the eerie woods and encounter ghosts, ghouls, and surprises lurking behind every corner.",
-      category: "holiday", // 🔥 matches Eventbrite categories
+        "Brave the eerie woods and encounter ghosts, ghouls, and surprises lurking behind every corner. Do you have what it takes to make it to the end?",
+      category: "halloween",
       date: "2024-10-25",
-      time: "7:00 PM",
-      location: "Seal City Park",
-      price: "Free",
+      time: "6:00 PM",
+      location: "Spooky Forest",
+      price: "$12",
       popularity: 379,
-
-      // Images
       imageLocal: require("../../assets/halloween_seal/seal_haunted_trail_1.png"),
-      imageUrl: null, // Future Eventbrite URL will go here
+      imageUrl: null,
     },
     {
       id: "halloween_002",
       title: "Witch's Brew Cocktail Party",
       description:
         "Sip spooky-themed drinks, enjoy mystical music, and conjure up a good time with friends at this magical mixology night.",
-      category: "holiday", // 🔥 matches Eventbrite categories
-      date: "2024-10-25",
-      time: "7:00 PM",
-      location: "Seal City Park",
-      price: "Free",
+      category: "halloween",
+      date: "2024-10-26",
+      time: "8:00 PM",
+      location: "The Mystic Tavern",
+      price: "$25",
       popularity: 284,
-
-      // Images
       imageLocal: require("../../assets/halloween_seal/seal_witch_brew_party_3.png"),
-      imageUrl: null, // Future Eventbrite URL will go here
+      imageUrl: null,
     },
     {
       id: "halloween_003",
       title: "Trick-or-Treak Movie Marathon",
       description:
         "Settle in for a night of Halloween classics, candy galore, and cozy scares under the flickering glow of the big screen.",
-      category: "holiday", // 🔥 matches Eventbrite categories
-      date: "2024-10-25",
+      category: "halloween",
+      date: "2024-10-27",
       time: "7:00 PM",
-      location: "Seal City Park",
-      price: "Free",
+      location: "Cinema Hall",
+      price: "$15",
       popularity: 139,
-
-      // Images
       imageLocal: require("../../assets/halloween_seal/seal_haloween_movie_marathon_1.png"),
-      imageUrl: null, // Future Eventbrite URL will go here
+      imageUrl: null,
     },
     {
       id: "halloween_004",
       title: "Monster Masquerade Ball",
       description:
         "Dress to impress (and terrify!) at this elegant Halloween soirée featuring costumes, dancing, and a prize for the best disguise.",
-      category: "holiday", // 🔥 matches Eventbrite categories
-      date: "2024-10-25",
-      time: "7:00 PM",
-      location: "Seal City Park",
-      price: "Free",
+      category: "halloween",
+      date: "2024-10-28",
+      time: "9:00 PM",
+      location: "Haunted Mansion",
+      price: "$30",
       popularity: 128,
-
-      // Images
       imageLocal: require("../../assets/halloween_seal/seal__masquerade_ball_1.png"),
-      imageUrl: null, // Future Eventbrite URL will go here
+      imageUrl: null,
     },
     {
       id: "halloween_005",
       title: "Haunted Escape Room Night",
       description:
         "Solve spooky puzzles and uncover the mystery before time runs out in this chilling escape room experience.",
-      category: "holiday", // 🔥 matches Eventbrite categories
-      date: "2024-10-25",
-      time: "7:00 PM",
-      location: "Seal City Park",
-      price: "Free",
+      category: "halloween",
+      date: "2024-10-29",
+      time: "6:30 PM",
+      location: "Escape House",
+      price: "$20",
       popularity: 274,
-
-      // Images
       imageLocal: require("../../assets/halloween_seal/seal_haunted_escape_room_2.png"),
-      imageUrl: null, // Future Eventbrite URL will go here
+      imageUrl: null,
     },
     {
       id: "halloween_006",
       title: "Zombie Glow Walk",
       description:
         "Join the undead for a glowing nighttime walk through town—complete with eerie lights, music, and post-walk festivities.",
-      category: "holiday", // 🔥 matches Eventbrite categories
-      date: "2024-10-25",
-      time: "7:00 PM",
-      location: "Seal City Park",
-      price: "Free",
-      popularity: 274,
-
-      // Images
+      category: "halloween",
+      date: "2024-10-30",
+      time: "8:30 PM",
+      location: "Downtown Streets",
+      price: "$10",
+      popularity: 387,
       imageLocal: require("../../assets/halloween_seal/seal_zombie_glow_walk_1.png"),
-      imageUrl: null, // Future Eventbrite URL will go here
+      imageUrl: null,
     },
     {
       id: "halloween_007",
       title: "Pumpkin Palooza",
       description:
         "Celebrate the season with pumpkin carving, games, and autumn treats. A perfect event for families and Halloween lovers alike.",
-      category: "holiday", // 🔥 matches Eventbrite categories
-      date: "2024-10-25",
-      time: "7:00 PM",
-      location: "Seal City Park",
+      category: "halloween",
+      date: "2024-10-31",
+      time: "5:00 PM",
+      location: "Community Park",
       price: "Free",
-      popularity: 274,
-
-      // Images
+      popularity: 152,
       imageLocal: require("../../assets/halloween_seal/seal_pumpkin_palooza_2.png"),
-      imageUrl: null, // Future Eventbrite URL will go here
+      imageUrl: null,
     },
   ],
 
