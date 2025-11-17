@@ -6,7 +6,7 @@ import { View, Text, StyleSheet, Image } from "react-native";
 //while single components show just a resuable piece
 
 // Destructruring the Props property to obtain imageSource, title and score.
-const HalloweenImageDetail = (prop) => {
+const ImageDetail = (prop) => {
   // console.log(prop); // use to view properties, must have props as parameter for ImageDetail function
 
   return (
@@ -63,4 +63,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HalloweenImageDetail;
+export default ImageDetail;

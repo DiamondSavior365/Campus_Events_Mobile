@@ -85,31 +85,46 @@ const DirectoryScreen = ({ navigation }) => {
         <EventButton
           title="Halloween Events"
           image={require("../../assets/button_Images/halloween_button.png")}
-          onPress={() => navigation.navigate("Halloween_Screen")}
+          // onPress={() => navigation.navigate("Halloween_Screen")} // old navigation
+          onPress={() =>
+            navigation.navigate("EventListScreen", { category: "halloween" })
+          }
         />
 
         <EventButton
           title="Thanksgiving Events"
           image={require("../../assets/button_Images/thanksgiving_button.png")}
-          onPress={() => navigation.navigate("Thanksgiving_Screen")}
+          // onPress={() => navigation.navigate("Thanksgiving_Screen")}
+          onPress={() =>
+            navigation.navigate("EventListScreen", { category: "thanksgiving" })
+          }
         />
 
         <EventButton
           title="Christmas Events"
           image={require("../../assets/button_Images/christmas_button.png")}
-          onPress={() => navigation.navigate("Christmas_Screen")}
+          // onPress={() => navigation.navigate("Christmas_Screen")}
+          onPress={() =>
+            navigation.navigate("EventListScreen", { category: "christmas" })
+          }
         />
 
         <EventButton
           title="F1 Racer Events"
           image={require("../../assets/button_Images/f1_button.png")}
-          onPress={() => navigation.navigate("F1_Racer_Screen")}
+          // onPress={() => navigation.navigate("F1_Racer_Screen")}
+          onPress={() =>
+            navigation.navigate("EventListScreen", { category: "f1" })
+          }
         />
 
         <EventButton
           title="Sports Events"
           image={require("../../assets/button_Images/sports_button.png")}
-          onPress={() => navigation.navigate("Sports_Screeen")}
+          // onPress={() => navigation.navigate("Sports_Screeen")}
+          onPress={() =>
+            navigation.navigate("EventListScreen", { category: "sports" })
+          }
         />
       </ScrollView>
 
