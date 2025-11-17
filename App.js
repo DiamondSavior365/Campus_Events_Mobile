@@ -25,7 +25,7 @@ function RootApp() {
               left: 70,
             },
             headerStyle: {
-              backgroundColor: "#1b6ab9",
+              backgroundColor: "#007AFF",
             },
             headerRight: () => (
               <Image
