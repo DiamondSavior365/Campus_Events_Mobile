@@ -23,36 +23,29 @@ function RootApp() {
       <Stack.Navigator
         initialRouteName="Home"
         screenOptions={{
-          headerShown: false,
-          headerTitle : "",
-          headerStyle: {
-            backgroundColor: "#1b6ab9ff",
-          },
-          headerTintColor: "#dadde0ff",
-
-          headerRight: () => (
-            <View
-              style={{
-                width: 50,
-                height: 50,
-                borderRadius: 9999,
-                overflow: "hidden",
-                borderWidth: 1.5,
-                borderColor: "white",
-                marginRight: 12,    // pushes away from the screen edge
-              }}
-            >
+            headerTitle: "Campus Events",
+            headerTitleStyle: {
+              fontSize: 20,
+              fontWeight: "bold",
+              color: "white",
+              left: 70,
+            },
+            headerStyle: {
+              backgroundColor: "#1b6ab9",
+            },
+            headerRight: () => (
               <Image
                 source={require("./assets/logo.png")}
                 style={{
-                  width: "100%",
-                  height: "100%",
-                  resizeMode: "cover",
+                  width: 40,
+                  height: 40,
+                  borderRadius: 20,
+                  marginRight: 12,
                 }}
               />
-            </View>
-          ),
+            ),
         }}
+
       >
         <Stack.Screen 
           name="Home" 

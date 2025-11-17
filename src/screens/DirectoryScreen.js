@@ -187,6 +187,7 @@ const styles = StyleSheet.create({
     textShadowColor: "rgba(0,0,0,0.7)", // optional for extra pop
     textShadowOffset: { width: 0, height: 1 },
     textShadowRadius: 2,
+    top : 10,
   },
   scrollContainer: {
     paddingVertical: 20,
