@@ -6,14 +6,18 @@ import {
   View,
   TouchableOpacity,
   ScrollView,
+  Image
 } from "react-native";
+import { BlurView } from "expo-blur";
 import { Video } from "expo-av";
 import { useAuthContext } from "../lib/supabase/hooks/useAuthContext";
+import { useSettingsContext } from "../lib/supabase/hooks/useSettingsContext";
 import SignOutButton from "../lib/supabase/components/SignOutButton";
 
 const DirectoryScreen = ({ navigation }) => {
   const [metadata, setMetadata] = useState(null);
   const { session } = useAuthContext();
+  const { settings } = useSettingsContext();
 
   const scaleAnim = useRef(new Animated.Value(1)).current;
 
@@ -42,43 +46,62 @@ const DirectoryScreen = ({ navigation }) => {
     }
   }, [session]);
 
-  // ✅ New wrapper for SignOutButton that also navigates home
   const handleSignOut = async () => {
     try {
-      // Trigger whatever logic your SignOutButton runs internally
-      // You can call its onPress manually if needed —
-      // but simplest is to just wrap it in a TouchableOpacity
       navigation.navigate("Home");
     } catch (error) {
       console.error("Error during sign out:", error);
     }
   };
 
-  const EventButton = ({ title, image, onPress }) => (
-    <TouchableOpacity onPress={onPress} activeOpacity={0.8}>
-      <View style={styles.eventButton}>
-        <Animated.Image
-          source={image}
-          style={[styles.animatedImage, { transform: [{ scale: scaleAnim }] }]}
-          resizeMode="contain"
-        />
-        <Text style={styles.eventText}>{title}</Text>
-      </View>
-    </TouchableOpacity>
-  );
+  const EventButton = ({ title, image, onPress }) => {
+
+    if (settings.button_style == "Glass") {
+      return (
+        <TouchableOpacity onPress={onPress} activeOpacity={0.8}>
+          <BlurView intensity={10} tint="light" style={styles.eventButtonGlass}>
+            <Text style={[styles.eventTextGlass, { color: settings.font_color }]}>{title}</Text>   
+          </BlurView>
+        </TouchableOpacity>
+      );
+    }
+
+    return (
+      <TouchableOpacity onPress={onPress} activeOpacity={0.8}>
+        <View style={styles.eventButton}>
+          {(settings.allow_btn_animations == "Animated") ? (
+            <Animated.Image
+              source={image}
+              style={[styles.animatedImage, { transform: [{ scale: scaleAnim }] }]}
+              resizeMode="contain"
+            />
+          ) : (
+            <Image
+              source={image}
+              style={styles.animatedImage}
+              resizeMode="contain"
+            />
+          )}
+          <Text style={[styles.eventText, { color: settings.font_color }]}>{title}</Text>
+        </View>
+      </TouchableOpacity>
+    );
+  };
 
   return (
-    <View style={styles.container}>
-      <Video
-        source={require("../../assets/Background_Videos/water_feature_1.mp4")}
-        style={StyleSheet.absoluteFill}
-        shouldPlay
-        isLooping
-        isMuted
-        resizeMode="cover"
-      />
+    <View style={[styles.container, { backgroundColor: settings.background_color }]}>
+      {settings.allow_video_bg == "Enabled" && (
+        <Video
+          source={require("../../assets/Background_Videos/water_feature_1.mp4")}
+          style={StyleSheet.absoluteFill}
+          shouldPlay
+          isLooping
+          isMuted
+          resizeMode="cover"
+        />
+      )}
       <View style={styles.titleBlockStyle}>
-        <Text style={styles.titleStyle}>Current Events</Text>
+        <Text style={[styles.titleStyle, { color: settings.font_color }]}>Current Events</Text>
       </View>
 
       <ScrollView contentContainerStyle={styles.scrollContainer}>
@@ -128,11 +151,9 @@ const DirectoryScreen = ({ navigation }) => {
         />
       </ScrollView>
 
-      {/* ✅ Wrap your existing SignOutButton so it navigates home */}
       <TouchableOpacity
         activeOpacity={0.8}
         onPress={() => {
-          // Let SignOutButton handle sign-out, then navigate Home
           handleSignOut();
         }}
       >
@@ -174,6 +195,7 @@ const DirectoryScreen = ({ navigation }) => {
 //     </TouchableOpacity>
 //   ),
 // });
+
 const styles = StyleSheet.create({
   animatedImage: {
     position: "absolute",
@@ -221,6 +243,19 @@ const styles = StyleSheet.create({
     overflow: "hidden",
     backgroundColor: "#f0f0f0",
   },
+  eventButtonGlass: {
+    width: 380,
+    height: 150,
+    justifyContent: "center",
+    outlineColor: "rgba(255, 255, 255, 0.2)",
+    outlineStyle: "solid",
+    outlineWidth: 2,
+    alignItems: "center",
+    borderRadius: 16,
+    overflow: "hidden",
+    backgroundColor: "rgba(255, 255, 255, 0.1)",
+    
+  },
   eventText: {
     color: "white",
     fontSize: 30,
@@ -229,6 +264,14 @@ const styles = StyleSheet.create({
     textShadowOffset: { width: 1, height: 1 },
     textShadowRadius: 3,
   },
+  eventTextGlass: {
+    color: "rgba(255, 255, 255, 0.8)",
+    fontSize: 30,
+    fontWeight: "600",
+    textShadowColor: "rgba(0, 0, 0, 0.3)",
+    textShadowOffset: { width: 1, height: 1 },
+    textShadowRadius: 5,
+  },  
   welcomeText: {
     textAlign: "center",
     // marginVertical: 10,
